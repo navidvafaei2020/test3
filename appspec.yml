@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+
+hooks:
+  BeforeInstall:
+    - location: scripts/deploy.sh
+      runas: root
+
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 60
+      runas: ec2-user
+
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 60
+      runas: ec2-user
